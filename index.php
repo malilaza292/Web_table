@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/index.css" />
 <?php
   require("header.php");
 ?>
@@ -8,6 +9,7 @@
         <div class="bg-success">
           <i class="fa-solid fa-users text-white"></i> 
         </div>
+
         <?php
           $sql = "SELECT * FROM bbcal";
           $result = mysqli_query($conn, $sql);
@@ -45,21 +47,24 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-       <div class="col-md-8">
-           <div class="search">
-             <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" name="" id="search" class="form-control" placeholder="Search" />
+    <div class="col-md-8">
+             <form>
+		<input type="text" name="name" class="question" id="search" class="form-control"required autocomplete="off" />
+		<label for="search"><span>ใส่ชื่อบริษัท หรือ ชื่อเครื่องได้ที่ช่องนี้</span></label>
+	  </form></p>
+    <div class="search">
     </div>
            <div class="table-data">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>Customer</th>
-            <th>Machine</th>
-            <th>Model</th>
-            <th>Serial</th>
-            <th>Brand</th>
-            <th>วันที่ติดตั้ง</th>
+            <th>ลำดับ</th>
+            <th>ชื่อลูกค้า</th>
+            <th>เครื่องทดสอบ</th>
+            <th>รุ่น</th>
+            <th>หมายเลข</th>
+            <th>ยี่ห้อ</th>
+            <th>วันติดตั้ง</th>
             <th>วันที่สอบเทียบ</th>
             <th>วันที่สอบเทียบครั้งต่อไป</th>
             <th>ความถี่สอบเทียบ</th>
@@ -69,61 +74,52 @@
         </thead>
         <tbody>
           <?php
-          $sql = "SELECT * FROM bbcal ";
-          if (isset($_POST['data'])) {
-            $filter = $_POST['data'];
-            $sql .= " WHERE CustomerName LIKE '%$filter%' OR TestMachine LIKE '%$filter%' OR Model LIKE '%$filter%' OR  SerialNum LIKE '%$filter%' OR Brand LIKE '%$filter%' OR SetupDate LIKE '%$filter%' OR CaliDate LIKE '%$filter%' OR NextCal LIKE '%$filter%' OR CaliFreq LIKE '%$filter%' OR email LIKE '%$filter%'";
-          }
-          $result = mysqli_query($conn, $sql);
-          $resultChecker = mysqli_num_rows($result);
-          if ($resultChecker > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              $id = $row['id'];
-              $CustomerName=@$row['CustomerName'];
-              $TestMachine=@$row['TestMachine'];
-              $Model=@$row['Model'];
-              $SerialNum=@$row['SerialNum'];
-              $Brand=@$row['Brand'];
-              $SetupDate=@$row['SetupDate'];
-              $CaliDate=@$row['CaliDate'];
-              $NextCal=@$row['NextCal'];
-              $CaliFreq=@$row['CaliFreq'];
-              $email=@$row['email'];
-              $upload =@$row['upload'];
-              
-              
-              echo '<tr >  
-              <td>'.$CustomerName.'</td> 
-              <td>'.$TestMachine.'</td>
-              <td>'.$Model.'</td>
-              <td>'.$SerialNum.'</td>
-              <td>'.$Brand.'</td>
-              <td>'.$SetupDate.'</td>
-              <td>'.$CaliDate.'</td>
-              <td>'.$NextCal.'</td>
-              <td>'.$CaliFreq.'</td>  
-              <td>'.$email.'</td>
-              <td>'.$upload.'</td>
-              <td>•••<div class="links shadow-sm">
-              <a class="btn btn-primary" type="submit" role="upload" href="mailto:อีเมล์ลูกค้า@email.com?Subject=(เรียนเพื่อทราบ)&body=จะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aติดต่อได้ที่ เบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
-              <form method="get" action="includes/table.inc.php?id="'.$id.'"">
-                <button type="submit" name="view"   value="'.$id.'">ดูรายละอียด</button>
-                <button type="submit" name="edit"   value="'.$id.'">แก้ไขข้อมูลนี้</button>
-                <button type="submit" name="delete" value="'.$id.'">ลบข้อมูลนี้</button>
-                <button type="submit" name="img"    value="'.$id.'">เพิ่มรูปรายชื่อ</button>
-              </div></td>
-              </form>
-            </tr>';
+          
+            $sql = "SELECT * FROM bbcal ";
+            if (isset($_POST['data'])) {
+              $filter = $_POST['data'];
+              $sql .= " WHERE CustomerName LIKE '%$filter%' OR TestMachine LIKE '%$filter%' OR 
+                        Model LIKE '%$filter%' OR  SerialNum LIKE '%$filter%' OR Brand LIKE '%$filter%' 
+                        OR SetupDate LIKE '%$filter%' OR CaliDate LIKE '%$filter%' OR NextCal LIKE '%$filter%' 
+                        OR CaliFreq LIKE '%$filter%' OR email LIKE '%$filter%'";
             }
-          } else {
-            echo '<h1 style="color:red;">ไม่มีข้อมูล</h1>';
-          }
 
+            $result = mysqli_query($conn, $sql);
+            $resultChecker = mysqli_num_rows($result);
+            if ($resultChecker > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
           ?>
+              <tr>
+                  <td><?php echo $row['id']?></td>
+                  <td><?php echo $row['CustomerName']?></td>
+                  <td><?php echo $row['TestMachine']?></td> 
+                  <td><?php echo $row['Model']?></td> 
+                  <td><?php echo $row['SerialNum']?></td> 
+                  <td><?php echo $row['Brand']?></td>
+                  <td><?php echo date("d - m - Y", strtotime($row["SetupDate"]));?></td>
+                  <td><?php echo date("d - m - Y", strtotime($row["CaliDate"]));?></td>
+                  <td><?php echo date("d - m - Y", strtotime($row["NextCal"]));?></td>
+                  <td><?php echo $row['CaliFreq']?></td>
+                  <td><?php echo $row['email']?></td>
+                  <td><?php echo $row['upload']?></td>
+                  <td>•••
+                    <div class="links shadow-sm">
+                      <a class="btn btn-primary" type="submit" role="upload" href="mailto:อีเมล์ลูกค้า@email.com?Subject=(เรียนเพื่อทราบ)&body=จะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aติดต่อได้ที่ เบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
+                      <form method="get" action="includes/table.inc.php?id=<?php echo $row['id']; ?>">
+                      <button type="submit" name="view"   value=<?php echo $row['id']; ?>>ดูรายละอียด</button>
+                      <button type="submit" name="edit"   value=<?php echo $row['id']; ?>>แก้ไขข้อมูลนี้</button>
+                      <button type="submit" name="delete" value=<?php echo $row['id']; ?>>ลบข้อมูลนี้</button>
+                      <button type="submit" name="img"    value=<?php echo $row['id']; ?>>เพิ่มรูปรายชื่อ</button>
+                  </div>
+                </td>
+              </tr>
+            <?php
+            }
+          } 
+?>
         </tbody>
       </table>
     </div>
-       </div>
     </div>
   </div>
 </div>

@@ -27,6 +27,7 @@
 body {
     background-color: var(--grey);
     position: relative;
+
 }
 /* SIDE BAR STYLING*/
 .sidebar {
@@ -291,7 +292,6 @@ border-radius: 50%;
   }
   table{
     text-overflow:ellipsis;
-    white-space:nowrap;
 }
     .stat div i {
       font-size: 30px;
