@@ -29,7 +29,8 @@
           $resultChecker = mysqli_num_rows($result);
           echo '<h4>'.$resultChecker.'</h4>';
         ?>
-        <p>รายชื่อบริษัทที่ส่งเดือนนี้</p>
+        <p>รายชื่อบริษัทที่ส่งไปเเล้ว
+        </p>
       </div>
       <div class="stat col-sm-3 shadow-sm bg-white text-warning">   
         <div class="bg-warning">
@@ -104,9 +105,9 @@
                   <td><?php echo $row['upload']?></td>
                   <td>•••
                     <div class="links shadow-sm">
-                      <a class="btn btn-primary" type="submit" role="upload" href="mailto:อีเมล์ลูกค้า@email.com?Subject=(เรียนเพื่อทราบ)&body=จะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aติดต่อได้ที่ เบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
+                      <a class="btn btn-primary" type="submit" role="upload" href="mailto:<?php echo $row['email']?>?Subject=(เรียนเพื่อทราบ)&body=ชื่อบริษัท <?php echo $row['CustomerName']?> เครื่อง <?php echo $row['TestMachine']?> %20%0Aจะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aโดยวันที่ <?php echo $row['NextCal']?> จะมีการสอบเทียบ %20%0Aติดต่อได้ที่ 188/26 หมู่ที่ 3 ต.บางศรีเมือง อ.เมืองนนทบุรี จ.นนทบุรี ประเทศไทย เทศบาลนครนนทบุรี 11000 %20%0Aเบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
                       <form method="get" action="includes/table.inc.php?id=<?php echo $row['id']; ?>">
-                      <button type="submit" name="view"   value=<?php echo $row['id']; ?>>ดูรายละอียด</button>
+                      <button type="submit" name="view"   value=<?php echo $row['id']; ?>>ดูรายละอียด</button>  
                       <button type="submit" name="edit"   value=<?php echo $row['id']; ?>>แก้ไขข้อมูลนี้</button>
                       <button type="submit" name="delete" value=<?php echo $row['id']; ?>>ลบข้อมูลนี้</button>
                       <button type="submit" name="img"    value=<?php echo $row['id']; ?>>เพิ่มรูปรายชื่อ</button>
