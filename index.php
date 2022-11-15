@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="css/index.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
 <?php
   require("header.php");
 ?>
@@ -97,22 +100,48 @@
                   <td><?php echo $row['Model']?></td> 
                   <td><?php echo $row['SerialNum']?></td> 
                   <td><?php echo $row['Brand']?></td>
-                  <td><?php echo date("d - m - Y", strtotime($row["SetupDate"]));?></td>
-                  <td><?php echo date("d - m - Y", strtotime($row["CaliDate"]));?></td>
-                  <td><?php echo date("d - m - Y", strtotime($row["NextCal"]));?></td>
+                  <td>
+                        <?php 
+                          if ($row['SetupDate'] == ''){
+                            echo '';
+                          }else{
+                            echo date('m-d-Y', strtotime($row['SetupDate']));
+                          }
+                        ?>  
+                    </td>
+
+                    <td>
+                        <?php 
+                          if ($row['CaliDate'] == ''){
+                            echo '';
+                          }else{
+                            echo date('m-d-Y', strtotime($row['CaliDate']));
+                          }
+                        ?>  
+                    </td>
+                    
+                    <td>
+                        <?php 
+                          if ($row['NextCal'] == ''){
+                            echo '';
+                          }else{
+                            echo date('m-d-Y', strtotime($row['NextCal']));
+                          }
+                        ?>  
+                    </td>
                   <td><?php echo $row['CaliFreq']?></td>
                   <td><?php echo $row['email']?></td>
                   <td><?php echo $row['upload']?></td>
                   <td>•••
                     <div class="links shadow-sm">
-                      <a class="btn btn-primary" type="submit" role="upload" href="mailto:<?php echo $row['email']?>?Subject=(เรียนเพื่อทราบ)&body=ชื่อบริษัท <?php echo $row['CustomerName']?> เครื่อง <?php echo $row['TestMachine']?> %20%0Aจะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aโดยวันที่ <?php echo $row['NextCal']?> จะมีการสอบเทียบ %20%0Aติดต่อได้ที่ 188/26 หมู่ที่ 3 ต.บางศรีเมือง อ.เมืองนนทบุรี จ.นนทบุรี ประเทศไทย เทศบาลนครนนทบุรี 11000 %20%0Aเบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
+                      <a class="btn btn-success" type="submit" href="mailto:<?php echo $row['email']?>?Subject=(เรียนเพื่อทราบ)&body=ชื่อบริษัท <?php echo $row['CustomerName']?> เครื่อง <?php echo $row['TestMachine']?> %20%0Aจะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aโดยวันที่ <?php echo $row['NextCal']?> จะมีการสอบเทียบ %20%0Aติดต่อได้ที่ 188/26 หมู่ที่ 3 ต.บางศรีเมือง อ.เมืองนนทบุรี จ.นนทบุรี ประเทศไทย เทศบาลนครนนทบุรี 11000 %20%0Aเบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
                       <form method="get" action="includes/table.inc.php?id=<?php echo $row['id']; ?>">
-                      <button type="submit" name="view"   value=<?php echo $row['id']; ?>>ดูรายละอียด</button>  
+                      <button type="submit" name="view"   value =<?php echo $row['id']; ?>>ดูรายละอียด</button>  
                       <button type="submit" name="edit"   value=<?php echo $row['id']; ?>>แก้ไขข้อมูลนี้</button>
-                      <button type="submit" name="delete" value=<?php echo $row['id']; ?>>ลบข้อมูลนี้</button>
+                      <button type="submit" name="delete" value=<?php echo $row['id']?> <?php echo "<a onClick=\"javascript: return confirm('ต้องการลบข้อมูลนี้ใช่หรือไม่');\" href='delete.php?delete=".$row['id']."'ลบข้อมูลนี้";?> ?>ลบข้อมูลนี้</button>
                       <button type="submit" name="img"    value=<?php echo $row['id']; ?>>เพิ่มรูปรายชื่อ</button>
                   </div>
-                </td>
+                </td> 
               </tr>
             <?php
             }
