@@ -56,11 +56,6 @@ require("header.php");
                         <p class="CaliFreq">ความถี่สอบเทียบ: <span>' . $CaliFreq . '</span></p>
                         <p class="email">ติดต่อ: <span>' . $email . '</span></p>
                     </div>
-                    <div class="social-links">
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
                 </div>
             </div>
         </div>';

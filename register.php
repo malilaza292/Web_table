@@ -23,7 +23,7 @@
         <div class="form-container shadow">
           <div class="register-form">
             <form method="post" action="includes/register.inc.php">
-              <div class="mb-3">
+              <div class="mb-3">  
                 <h3>เพิ่มข้อมูล</h3>
               </div>
               <div class="mb-3">

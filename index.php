@@ -105,7 +105,7 @@
                           if ($row['SetupDate'] == ''){
                             echo '';
                           }else{
-                            echo date('m-d-Y', strtotime($row['SetupDate']));
+                            echo date('d-m-Y', strtotime($row['SetupDate']));
                           }
                         ?>  
                     </td>
@@ -115,7 +115,7 @@
                           if ($row['CaliDate'] == ''){
                             echo '';
                           }else{
-                            echo date('m-d-Y', strtotime($row['CaliDate']));
+                            echo date('d-m-Y', strtotime($row['CaliDate']));
                           }
                         ?>  
                     </td>
@@ -125,7 +125,7 @@
                           if ($row['NextCal'] == ''){
                             echo '';
                           }else{
-                            echo date('m-d-Y', strtotime($row['NextCal']));
+                            echo date('d-m-Y', strtotime($row['NextCal']));
                           }
                         ?>  
                     </td>
@@ -136,7 +136,7 @@
                     <div class="links shadow-sm">
                       <a class="btn btn-success" type="submit" href="mailto:<?php echo $row['email']?>?Subject=(เรียนเพื่อทราบ)&body=ชื่อบริษัท <?php echo $row['CustomerName']?> เครื่อง <?php echo $row['TestMachine']?> %20%0Aจะมีการสอบเทียบภายในอีก 1 เดือนจึงเเจ้งมาให้ทราบขอบคุณ %20%0Aโดยวันที่ <?php echo $row['NextCal']?> จะมีการสอบเทียบ %20%0Aติดต่อได้ที่ 188/26 หมู่ที่ 3 ต.บางศรีเมือง อ.เมืองนนทบุรี จ.นนทบุรี ประเทศไทย เทศบาลนครนนทบุรี 11000 %20%0Aเบอร์โทร: 02-881-5586 หรือ FAX: 02-881-5587" value="'.$id.'">ส่งข้อมูล</a>
                       <form method="get" action="includes/table.inc.php?id=<?php echo $row['id']; ?>">
-                      <button type="submit" name="view"   value =<?php echo $row['id']; ?>>ดูรายละอียด</button>  
+                      <button type="submit" name="view"   value=<?php echo $row['id']; ?>>ดูรายละอียด</button>  
                       <button type="submit" name="edit"   value=<?php echo $row['id']; ?>>แก้ไขข้อมูลนี้</button>
                       <button type="submit" name="delete" value=<?php echo $row['id']?> <?php echo "<a onClick=\"javascript: return confirm('ต้องการลบข้อมูลนี้ใช่หรือไม่');\" href='delete.php?delete=".$row['id']."'ลบข้อมูลนี้";?> ?>ลบข้อมูลนี้</button>
                       <button type="submit" name="img"    value=<?php echo $row['id']; ?>>เพิ่มรูปรายชื่อ</button>
@@ -145,7 +145,7 @@
               </tr>
             <?php
             }
-          } 
+          }
 ?>
         </tbody>
       </table>
