@@ -52,39 +52,14 @@
                 </a>
                <p class="tool">เยี่ยมชมเว็บไซต์</p>
             </li>
-            <li>
-                <a href="https://docs.google.com/spreadsheets/d/1semIBQBB6g6tO6YgB5yejTkUiOK-U5gTPI5Mx3qkSs4/edit#gid=14521772">
-                    <i class="fa-solid fa-file-code"></i>
-                    <span class="link-name">Sheet</span>
-                </a>
-             <p class="tool">Sheet</p>
-            </li>
         </ul>
     </div>
     <header>
       <div class="header">
           <div class="header-text">
             <p><span>Contact</span> Reminder</p> 
-
-              <a
-                class="nav-link"
-                href="https://www.facebook.com/บริษัท-บีบี-แคล-แอนด์-เซอร์วิส-จำกัด-100843921863987/"
-                rel="nofollow"
-                target="_blank"
-              >
-                <span><i class="fab fa-facebook"></i></span>
-              </a>
             </li>
             
-          </div>
-          <div class="themes">
-            <div class="current">
-            <div class="green"></div> Themes </div>
-            <div class="theme">
-            <div class="blue"></div>
-            <div class="red"></div>
-            <div class="violet"></div>
-            <div class="green"></div>
           </div>
           </div>
       </div>
