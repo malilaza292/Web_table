@@ -1,16 +1,10 @@
 <link rel="stylesheet" href="css/index.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 <?php
   require("header.php");
 ?>
-
 <div class="home-content">
      <div class="container-fluid">
     <div class="row">
@@ -59,16 +53,14 @@
     <div class="row">
     <div class="col-md-8">
              <form>
-             <div type="button" class="plus-button pull-right"><a style ="text-decoration:none" href="Register.php">+</a></div>
-		<input type="text" name="name" class="question" id="search" class="form-control" required autocomplete="off" />
+		<input type="text" name="name" class="question" id="search" class="form-control"required autocomplete="off" />
 		<label for="search"><span>ใส่ชื่อบริษัท หรือ ชื่อเครื่องได้ที่ช่องนี้</span></label>
-	  </form>
-  </p>
+	  </form></p>
     <div class="search">
     </div>
            <div class="table-data">
-      <table class="table table-striped table-hover" style='font-size:95%'>
-      <thead class="thead-dark">
+      <table class="table table-striped table-hover" style='font-size:90%'>
+        <thead>
           <tr>
             <th>ชื่อลูกค้า</th>
             <th>เครื่องทดสอบ</th>
@@ -81,13 +73,12 @@
             <th>ความถี่สอบเทียบ</th>
             <th>ติดต่อ</th>
             <th>สถานะ</th>
-            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           <?php
-            $current_date = date('Y-m-d');
-            $sql = "SELECT * FROM bbcal ORDER BY DAY(Nextcal) DESC ";
+          
+            $sql = "SELECT * FROM bbcal ";
             if (isset($_POST['data'])) {
               $filter = $_POST['data'];
               $sql .= " WHERE CustomerName LIKE '%$filter%' OR TestMachine LIKE '%$filter%' OR 
@@ -156,6 +147,9 @@
 ?>
         </tbody>
       </table>
+    </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -165,6 +159,32 @@ var closeBtn2 = document.querySelector('.fa-bars');
 var sideBar = document.querySelector('.sidebar');
 var currentTheme = document.querySelector('.current div');
 var otherThemes = document.querySelectorAll('.theme div');
+
+//THEMES
+otherThemes.forEach(otherTheme => {
+  otherTheme.addEventListener('click', function() {
+    let x = otherTheme.className;
+      $(':root').css({
+        '--green': x,
+      });    
+    switch (x) {
+      case 'green':
+        currentTheme.className = 'green';
+        break;
+      case 'red':
+        currentTheme.className = 'red';
+        break;
+      case 'blue':
+        currentTheme.className = 'blue';
+        break;
+        case 'violet':
+          currentTheme.className = 'violet';
+          break;
+      default:
+        break;
+    }
+});
+});
 
 //TOGGLE CLOSE BUTTON
 btns.forEach(btn => {
@@ -186,12 +206,4 @@ $("#search").on("keyup", function() {
   });
   });
 
-  $(document).ready(function(){
-    $("#plus-button").mouseenter(function(){
-        $(this).addClass("expanded");
-    });
-    $("#plus-button").mouseleave(function(){
-        $(this).removeClass("expanded");
-    });
-});
 </script>
