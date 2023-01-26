@@ -16,8 +16,6 @@
         echo '<div class="to shadow">
         <p class="pt-3">เพิ่มเสร็จสิ้น</p>
       </div>';
-      $new_date = date('Y-m-d', strtotime($_POST['dateFrom']));
-      echo $new_date;
       }
     }
   ?>
@@ -50,15 +48,15 @@
               </div>
               <div class="mb-3">
                 <label for="SetupDate" class="form-label">วันที่ติดตั้ง</label>
-                <input type="date" name="SetupDate" class="form-control" id="SetupDate" <?php echo date('Y-m-d'); ?>>
+                <input type="date" name="SetupDate" class="form-control" id="SetupDate" autocomplete="on" value="00/00/00" data-date-format="dd/mm/yy" id="dp2">
               </div>
               <div class="mb-3">
                 <label for="CaliDate" class="form-label">วันที่สอบเทียบ</label>
-                <input type="date" name="CaliDate" class="form-control" id="CaliDate" <?php echo date('Y-m-d'); ?>>
+                <input type="date" name="CaliDate" class="form-control" id="CaliDate" autocomplete="on" value="00/00/00" data-date-format="dd/mm/yy" id="dp2">
               </div>
               <div class="mb-3">
                 <label for="NextCal" class="form-label">วันที่สอบเทียบครั้งต่อไป</label>
-                <input type="date" name="NextCal" class="form-control" id="NextCal" <?php echo date('Y-m-d'); ?>>
+                <input type="date" name="NextCal" class="form-control" id="NextCal" autocomplete="on" value="00/00/00" data-date-format="dd/mm/yy" id="dp2">
               </div>
               <div class="mb-3">
                 <label for="CaliFreq" class="form-label">ความถี่สอบเทียบ</label>

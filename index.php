@@ -62,6 +62,7 @@
       <table class="table table-striped table-hover" style='font-size:90%'>
         <thead>
           <tr>
+            <th>ลำดับ</th>
             <th>ชื่อลูกค้า</th>
             <th>เครื่องทดสอบ</th>
             <th>รุ่น</th>
@@ -93,6 +94,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
           ?>
               <tr>
+                  <td><?php echo $row['id']?></td>
                   <td><?php echo $row['CustomerName']?></td>
                   <td><?php echo $row['TestMachine']?></td> 
                   <td><?php echo $row['Model']?></td> 
