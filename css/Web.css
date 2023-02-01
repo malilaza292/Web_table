@@ -50,7 +50,6 @@
 	-moz-font-smoothing: antialiased;
 	-ms-font-smoothing: antialiased;
 	-o-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 	-webkit-font-feature-settings: "liga" 1, "dlig" 1;
 	-moz-font-feature-settings: "liga=1, dlig=1";
 	-ms-font-feature-settings: "liga" 1, "dlig" 1;
@@ -1609,11 +1608,6 @@ hr
 	margin: 0 0 3em 0;
 	text-align: center;
 }
-
-.title:after
-{
-}
-
 .title h2
 {
 	margin: 0 0 1em 0;
@@ -1941,7 +1935,7 @@ ul.contact li a.icon-rss:before
 	padding: 0.80em 1.5em;
 	letter-spacing: 0.25em;
 	text-decoration: none;
-	font-size: 0.80em;
+	font-size:120%;
 	font-weight: 600;
 	text-transform: uppercase;
 	outline: 0;

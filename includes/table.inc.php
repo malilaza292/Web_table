@@ -4,10 +4,12 @@ if (isset($_GET['view'])) {
     $id = $_GET['view'];
     header("Location: ../users.php?id=" . $id . "");
 
-} elseif (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    $sql = "DELETE FROM bbcal WHERE id = " . $id . "";
-    mysqli_query($conn, $sql);
+} elseif(isset($_GET['delete']))
+{
+    $id = mysqli_real_escape_string($con, $_GET['delete']);
+
+    $sql = "DELETE FROM bbcal WHERE id='$row' ";
+    mysqli_query($con, $sql);
     header("Location: ../index.php");
 
 } elseif (isset($_GET['img'])) {
@@ -49,7 +51,7 @@ if (isset($_GET['view'])) {
                 "&NextCal=" . $NextCal .
                 "&CaliFreq=" . $CaliFreq .
                 "&email=" . $email);
-        }
+        }   
     }
 } else {
     # code...
